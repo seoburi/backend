@@ -1,75 +1,160 @@
-### MAIN브랜치에는 아무것도 두지 않는 걸로하고 브랜치를 파서 거기다가 푸시하기!!
+### Sand box 주소
 
+- [Sand Box](https://ssafysandbox.vercel.app/)
 
-#### Type: 커밋의 종류
+## 📝 Develop Rule
 
-- feat: 새로운 기능 추가
-- fix: 버그 수정
-- docs: 문서 수정
-- style: 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우
-- refactor: 코드 리팩토링
-- test: 테스트 코드, 리팩토링 테스트 코드 추가
-- chore: 빌드 업무 수정, 패키지 매니저 수정
+---
 
-##### Subject: 커밋의 간단한 설명
+**main branch에 PR이나 push 하지말 것!**
 
-현재 시제의 명령어 형태로 작성
-첫 글자는 대문자로 시작
-마침표로 끝내지 않음
+자신의 이름으로 branch 만들어서 해당 branch에서 개발하기 (ex. cheolsu)
 
-##### Body: 커밋에 대한 상세 설명 (선택사항)
+## 🚩 Commit Convention
 
-어떻게 변경했는지보다 무엇을 변경했는지, 왜 변경했는지를 설명
+---
 
-##### Footer: 주요 변경사항이나 Breaking Changes 등을 기술 (선택사항)
+### Commit Message Structure
 
-BREAKING CHANGE: API의 변경 등 크리티컬한 변경사항을 기술
-Closes #123, #456: 관련된 이슈 번호를 명시
+- 기본적인 commit message 구조
+
+  - 각 파트는 빈 줄로 구분
+
+    > 제목 (Type: Subject) <br />
+    > (공백) <br />
+    > 본문 (Body) <br />
+    > (공백) <br />
+    > Footer
+
+  - Subject
+    - 제목은 50자 이내
+    - 마침표 및 특수기호 사용 금지
+    - 영문인 경우 동사(원형)을 가장 앞에, 첫 글자는 대문자로 작성
+  - Body
+    - 72자 이내로 작성
+    - 최대한 상세히 작성
+    - 무엇을, 왜 변경했는지 작성
+  - Footer(optional)
+    - issue tracker ID 명시하고 싶은 경우 작성
+    - 유형: #이슈 번호 형식으로 작성
+    - 이슈 트래커 유형
+      - Fixes: 수정 중(아직 해결되지 않은 경우)
+      - Resolves: 이슈를 해결
+      - Ref: 참고할 이슈가 있을 때 사용
+      - Related to: 관련된 이슈 번호
+
+### Commit Type
+
+| Tag Name |                            Description                             |
+| :------: | :----------------------------------------------------------------: |
+|   feat   |                          새로운 기능 추가                          |
+|   fix    |                             버그 수정                              |
+|   docs   |                             문서 수정                              |
+|  style   |                 코드 포맷팅, 코드 변경이 없는 경우                 |
+| refactor |                       프로덕션 코드 리팩토링                       |
+|   test   |                          테스트 코드 추가                          |
+|  chore   | 빌드 업무 수정, 패키지 매니저 수정, 프로덕션 코드 변경이 없는 경우 |
+|  remove  |                       파일을 삭제만 한 경우                        |
+|  rename  |     파일 또는 디렉터리 명을 수정하거나 옮기는 작업만 있는 경우     |
 
 ### 예시
 
-fix(database): 사용자 정보 조회 시 발생하는 NullPointerException 수정
+```
+fix: 사용자 정보 조회 시 발생하는 NullPointerException 수정
 
-- 사용자 정보가 없을 경우 기본값 반환하도록 로직 변경
+사용자 정보가 없을 경우 기본값 반환하도록 로직 변경
 
-BREAKING CHANGE: getUserInfo() 메소드의 반환 타입이 Optional<UserInfo>로 변경됨
+---------------------------------------------------------
+feat: 사용자 정보 조회 기능 추가
 
-저장소 이름:
+마이페이지에서 사용하기 위한
+사용자 정보를 ID를 기준으로 조회 하는 메서드 추가
+MyPageDTO에 정보를 담아 반환
+```
 
-일반적으로 프로젝트의 목적을 나타내는 이름을 사용합니다.
-예: user-management-service, payment-processing-api
+## 🚩 Naming Convention
 
-파일 네이밍:
+---
 
-클래스: PascalCase (예: UserController.java, PaymentService.java)
-인터페이스: PascalCase, 'I' 접두사 사용 가능 (예: UserRepository.java 또는 IUserRepository.java)
-테스트: 테스트 대상 클래스 이름 + "Test" (예: UserControllerTest.java)
+- Branch Name
 
+  - 일반적으로 목적을 나타내는 이름을 사용
 
-변수 및 메소드 네이밍:
+    - 기능 개발: `feature/{name}/{feature name}`
 
-변수: camelCase (예: userId, paymentAmount)
-메소드: camelCase, 동사로 시작 (예: getUserById(), processPayment())
-상수: UPPER_SNAKE_CASE (예: MAX_RETRY_COUNT, API_BASE_URL)
+    - 버그 수정: `fix/{name}/{feature name}`
 
+- File Name
 
-패키지 네이밍:
+  - Class
 
-모두 소문자 사용 (예: com.company.project.controllers)
+    - PascalCase
 
+    - ex: `UserController.java, PaymentService.java`
 
-데이터베이스 관련:
+  - Interface
 
-테이블 이름: snake_case, 복수형 (예: users, payment_transactions)
-컬럼 이름: snake_case (예: user_id, created_at)
+    - PascalCase
 
+    - 'I' 접두사 사용 가능
 
-API 엔드포인트:
+    - ex: `UserRepository.java 또는 IUserRepository.java`
 
-RESTful 규칙 따르기 (예: /api/v1/users, /api/v1/payments)
-버전 관리 포함 (v1, v2 등)
+- Test
 
+  - 테스트 대상 클래스 이름 + "Test"
 
-설정 파일:
+  - ex: `UserControllerTest.java`
 
-환경별 설정 파일 사용 (예: application-dev.properties, application-prod.properties)
+- Variable or Method
+
+  - Variable
+
+    - camelCase
+
+    - ex: `userId, paymentAmount`
+
+  - Method
+
+    - camelCase
+
+    - 동사로 시작
+
+    - ex: `getUserById(), processPayment()`
+
+  - Constant
+    - UPPER_SNAKE_CASE
+    - ex: `MAX_RETRY_COUNT, API_BASE_URL`
+
+- Pagkage
+
+  - 모두 소문자 사용
+  - ex: `com.company.project.controller`
+
+- Database
+
+  - Table Name
+
+    - snake_case + 복수형
+
+    - ex: `users, payment_transactions`
+
+  - Column Name
+
+    - snake_case
+
+    - ex: `id, created_at`
+
+- API Endpoint
+
+  - RESTful 규칙 따르기
+
+  - 버전 관리 포함 (v1, v2 등)
+
+  - ex: `/api/v1/users, /api/v1/payments`
+
+- Config files
+
+  - 환경별 설정 파일 사용
+
+  - ex: `application-local.properties, application-prod.properties`
