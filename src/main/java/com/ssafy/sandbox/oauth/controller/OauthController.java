@@ -86,15 +86,15 @@ public class OauthController {
             }
         }
 
-//        if (refreshToken == null || refreshToken.equals("")) {
-//            return ResponseEntity
-//                    .status(HttpStatus.UNAUTHORIZED)
-//                    .body(ErrorResponseDto.of(HttpStatus.UNAUTHORIZED));
-//        } else if (refreshToken.equals("...")) {
-//            return ResponseEntity
-//                    .status(HttpStatus.FORBIDDEN)
-//                    .body(ErrorResponseDto.of(HttpStatus.FORBIDDEN));
-//        }
+        if (refreshToken == null || refreshToken.equals("")) {
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body(ErrorResponseDto.of(HttpStatus.UNAUTHORIZED));
+        } else if (refreshToken.equals("...")) {
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .body(ErrorResponseDto.of(HttpStatus.FORBIDDEN));
+        }
 
 
         return ResponseEntity.ok()
