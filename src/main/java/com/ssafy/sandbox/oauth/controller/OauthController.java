@@ -20,7 +20,6 @@ import java.time.Duration;
 public class OauthController {
 
     private final OauthService oauthService;
-    private final RestTemplate restTemplate;
 
     @PostMapping("/auth")
     public ResponseEntity<ResponseAuthDto> getAccessTokenFromKakao(@RequestBody RequestAuthDto requestAuthDto) {
