@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class EmailScheduler {
     private final EmailVerificationRepository emailVerificationRepository;
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 300000)
     @Transactional
     public void cleanupExpiredEmails() {
         emailVerificationRepository.deleteByExpiryDateLessThan(LocalDateTime.now());
